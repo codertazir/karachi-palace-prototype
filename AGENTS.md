@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Restaurant facts, hours, menu and reviews live in `src/lib/restaurant.ts`; pages read from it so details change in one place.
+- Open/closed status is computed in Al Khobar time (UTC+3) after hydration, so server and browser markup match.
