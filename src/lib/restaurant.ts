@@ -40,66 +40,175 @@ export function isOpenAt(date: Date): boolean {
   return minutes >= today.openMinutes;
 }
 
-export type MenuItem = { name: string; urdu?: string; description: string; signature?: boolean };
-export type MenuSection = { id: string; title: string; urdu: string; intro: string; items: MenuItem[] };
+export type MenuItem = { name: string; price: string; calories: number };
+export type MenuSection = {
+  id: string;
+  title: string;
+  urdu: string;
+  intro: string;
+  image: "bbq" | "rolls" | "biryani" | "kheer";
+  items: MenuItem[];
+};
 
+/** Prices in Saudi Riyal (SR), from the restaurant's printed menu. */
 export const MENU: MenuSection[] = [
   {
     id: "bbq",
-    title: "Charcoal BBQ",
+    title: "BBQ Platter",
     urdu: "باربی کیو",
-    intro: "Marinated overnight, grilled to order over live coals the Karachi way.",
+    intro: "Grilled to order over live coals, served as a full platter.",
+    image: "bbq",
     items: [
-      {
-        name: "Mixed BBQ Platter",
-        description: "Chicken tikka, malai boti, seekh and Bihari kabab with paratha, chutney and onions.",
-        signature: true,
-      },
-      { name: "Chicken Tikka", description: "Bone-in chicken in a fiery red masala, smoky and charred at the edges." },
-      { name: "Chicken Malai Boti", description: "Silky boneless chicken in cream, cheese and green chilli marinade." },
-      { name: "Bihari Kabab", description: "Thin beef strips beaten tender, spiced with papaya and mustard oil.", signature: true },
-      { name: "Seekh Kabab", description: "Hand-pressed minced beef on skewers with fresh herbs and green chilli." },
-      { name: "Beef Kabab Platter", description: "A generous spread of beef kababs with paratha and mint chutney." },
+      { name: "Chicken Boti Platter", price: "27", calories: 805 },
+      { name: "Chicken Malai Boti Platter", price: "27", calories: 815 },
+      { name: "Chicken Kabab Platter", price: "27", calories: 830 },
+      { name: "Beef Kabab Platter", price: "27", calories: 845 },
+      { name: "Beef Bihari Platter", price: "30", calories: 740 },
+      { name: "Mix Platter", price: "60", calories: 1430 },
     ],
   },
   {
-    id: "street",
-    title: "Rolls & Bun Kabab",
-    urdu: "رول اور بن کباب",
-    intro: "Burns Road and Boat Basin favourites — wrapped hot and eaten with your hands.",
+    id: "tikka",
+    title: "Tikka",
+    urdu: "تکہ",
+    intro: "Priced leg / chest.",
+    image: "bbq",
     items: [
-      {
-        name: "Bun Kabab",
-        description: "Spiced shami patty in a toasted bun with onions, green chutney and imli sauce.",
-        signature: true,
-      },
-      { name: "Egg Bun Kabab", description: "The classic, crowned with a fried egg — a Karachi late-night staple." },
-      { name: "Bihari Roll", description: "Bihari beef kabab rolled in flaky paratha with onions and chutney.", signature: true },
-      { name: "Malai Boti Roll", description: "Creamy malai boti wrapped in paratha with mint mayo." },
-      { name: "Chicken Garlic Mayo Roll", description: "Grilled chicken, garlic mayo and crunchy onions in paratha." },
+      { name: "Chicken Tikka – Regular", price: "14 / 16", calories: 580 },
+      { name: "Chicken Spl Tikka – Malai", price: "14 / 16", calories: 610 },
+      { name: "Chicken Spl Tikka – Bihari", price: "14 / 16", calories: 580 },
     ],
   },
   {
-    id: "handi",
-    title: "Biryani, Karahi & Haleem",
-    urdu: "بریانی اور کڑاہی",
-    intro: "Slow pots and hot woks — the comfort food of every Karachi household.",
+    id: "rice",
+    title: "Rice",
+    urdu: "چاول",
+    intro: "Biryani and pulao, Karachi style.",
+    image: "biryani",
     items: [
-      {
-        name: "Karachi Chicken Biryani",
-        description: "Layered basmati with saffron, potato, egg and fried onions, served with raita.",
-        signature: true,
-      },
-      { name: "Chicken Karahi", description: "Tomato, ginger and green chilli cooked down in the karahi, finished with coriander." },
-      { name: "Chicken Haleem", description: "Wheat, lentils and chicken slow-cooked for hours, topped with crisp onions and lemon." },
+      { name: "Chicken Biryani", price: "16", calories: 315 },
+      { name: "Mutton Biryani (weekend)", price: "24", calories: 320 },
+      { name: "Beef Pulao", price: "20", calories: 340 },
+      { name: "Chullu Kabab", price: "29", calories: 380 },
+    ],
+  },
+  {
+    id: "curries",
+    title: "Curries",
+    urdu: "سالن",
+    intro: "Slow pots, home-style.",
+    image: "biryani",
+    items: [
+      { name: "Chicken Korma", price: "17", calories: 330 },
+      { name: "Mutton Korma", price: "20", calories: 345 },
+      { name: "Haleem (Beef)", price: "17", calories: 315 },
+      { name: "Keema (Beef)", price: "18", calories: 385 },
+      { name: "Brain Masala", price: "20", calories: 320 },
+      { name: "Fry Kabab (weekend)", price: "29", calories: 405 },
+    ],
+  },
+  {
+    id: "rolls",
+    title: "Paratha Roll",
+    urdu: "پراٹھا رول",
+    intro: "Wrapped hot in flaky paratha.",
+    image: "rolls",
+    items: [
+      { name: "Chicken Boti Chatni Roll", price: "13", calories: 380 },
+      { name: "Chicken Boti Mayogarlic Roll", price: "14", calories: 405 },
+      { name: "Chicken Malai Boti Chatni Roll", price: "13", calories: 390 },
+      { name: "Chicken Malai Boti Mayogarlic Roll", price: "14", calories: 415 },
+      { name: "Chicken Kabab Roll", price: "13", calories: 385 },
+      { name: "Beef Kabab Roll", price: "13", calories: 390 },
+      { name: "Beef Bihari Roll", price: "14", calories: 395 },
+      { name: "Chapli Roll", price: "13", calories: 405 },
+      { name: "Chicken Cheese Roll", price: "15", calories: 415 },
+    ],
+  },
+  {
+    id: "bun",
+    title: "Bun Kabab & Sandwiches",
+    urdu: "بن کباب",
+    intro: "Burns Road favourites.",
+    image: "rolls",
+    items: [
+      { name: "Bun Kabab", price: "7", calories: 265 },
+      { name: "Bun Kabab with Egg", price: "8", calories: 280 },
+      { name: "Bihari Bun Kabab", price: "10", calories: 315 },
+      { name: "Chapli Bun Kabab", price: "10", calories: 320 },
+      { name: "Zinger Burger", price: "15", calories: 405 },
+      { name: "Club Sandwich", price: "15", calories: 390 },
+      { name: "Malai Boti Wrap", price: "15", calories: 370 },
+    ],
+  },
+  {
+    id: "pizza",
+    title: "Pizza & Fries",
+    urdu: "پیزا",
+    intro: "Desi toppings on every slice.",
+    image: "rolls",
+    items: [
+      { name: "Chicken Tikka Boti Pizza", price: "25", calories: 320 },
+      { name: "Chicken Malai Boti Pizza", price: "25", calories: 320 },
+      { name: "Beef Bihari Pizza", price: "25", calories: 340 },
+      { name: "Plain Fries", price: "7", calories: 370 },
+      { name: "Masala Fries with Mayogarlic", price: "9", calories: 395 },
+    ],
+  },
+  {
+    id: "bread",
+    title: "Bread",
+    urdu: "روٹی",
+    intro: "Fresh from the tandoor.",
+    image: "biryani",
+    items: [
+      { name: "Puri Paratha", price: "3", calories: 215 },
+      { name: "Naan", price: "1", calories: 175 },
+      { name: "Chapati", price: "1", calories: 105 },
+      { name: "Taftan", price: "5", calories: 205 },
+      { name: "Shermaal", price: "5", calories: 180 },
+    ],
+  },
+  {
+    id: "chinese",
+    title: "Chinese & Soup",
+    urdu: "سوپ",
+    intro: "Karachi-style Chinese.",
+    image: "biryani",
+    items: [
+      { name: "Chicken Chowmein", price: "19", calories: 355 },
+      { name: "Chicken Corn Soup", price: "8", calories: 155 },
+      { name: "Hot & Sour Soup", price: "8", calories: 140 },
+    ],
+  },
+  {
+    id: "sides",
+    title: "Salad & Sauces",
+    urdu: "سلاد",
+    intro: "On the side.",
+    image: "kheer",
+    items: [
+      { name: "Green Salad", price: "8", calories: 70 },
+      { name: "Chatni", price: "1", calories: 30 },
+      { name: "Mayogarlic", price: "2", calories: 140 },
+      { name: "Raita", price: "2", calories: 20 },
     ],
   },
   {
     id: "sweet",
-    title: "Something Sweet",
+    title: "Desserts & Beverages",
     urdu: "میٹھا",
     intro: "End the meal the way it should end.",
-    items: [{ name: "Kheer", description: "Slow-simmered rice pudding with cardamom, pistachio and almond." }],
+    image: "kheer",
+    items: [
+      { name: "Kheer", price: "8", calories: 205 },
+      { name: "Falooda", price: "15", calories: 220 },
+      { name: "Limca", price: "7", calories: 170 },
+      { name: "Pakola", price: "3.50", calories: 210 },
+      { name: "Cold Drink", price: "3", calories: 77 },
+      { name: "Doodh Patti", price: "2", calories: 75 },
+      { name: "Water", price: "1", calories: 0 },
+    ],
   },
 ];
 

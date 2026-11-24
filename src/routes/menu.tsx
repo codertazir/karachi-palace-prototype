@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Flame, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHeading } from "@/components/site/PageHeading";
 import { MENU, RESTAURANT } from "@/lib/restaurant";
@@ -8,12 +8,7 @@ import rolls from "@/assets/rolls.jpg";
 import biryani from "@/assets/biryani.jpg";
 import kheer from "@/assets/kheer.jpg";
 
-const SECTION_IMAGES: Record<string, string> = {
-  bbq: heroBbq,
-  street: rolls,
-  handi: biryani,
-  sweet: kheer,
-};
+const SECTION_IMAGES = { bbq: heroBbq, rolls, biryani, kheer };
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -21,7 +16,7 @@ export const Route = createFileRoute("/menu")({
       { title: "Menu — Karachi Palace, Al Khobar" },
       {
         name: "description",
-        content: "Charcoal BBQ platters, Bihari kabab, bun kabab, paratha rolls, chicken biryani, haleem and kheer.",
+        content: "Full Karachi Palace menu with prices in SR: BBQ platters, tikka, biryani, curries, paratha rolls, bun kabab, pizza, breads and desserts.",
       },
       { property: "og:title", content: "Menu — Karachi Palace, Al Khobar" },
       {
@@ -42,7 +37,7 @@ function MenuPage() {
         eyebrow="The menu"
         title="Straight from Karachi"
         urdu="مینو"
-        intro="Our most-loved dishes. Ask in store or call for today's full menu, prices and specials."
+        intro="Our full menu. Prices in Saudi Riyal (SR), calories listed per item."
       />
 
       <nav className="sticky top-[5.4rem] z-30 border-b border-border bg-background/90 backdrop-blur">
@@ -60,15 +55,15 @@ function MenuPage() {
           <section
             key={section.id}
             id={section.id}
-            className="grid scroll-mt-40 items-start gap-12 md:grid-cols-[2fr_3fr]"
+            className="reveal grid scroll-mt-40 items-start gap-12 md:grid-cols-[2fr_3fr]"
           >
             <div className={idx % 2 === 1 ? "md:order-2" : ""}>
               <div className="md:sticky md:top-44">
                 <img
-                  src={SECTION_IMAGES[section.id]}
+                  src={SECTION_IMAGES[section.image]}
                   alt={section.title}
                   loading="lazy"
-                  className="arch aspect-[4/5] w-full object-cover shadow-card"
+                  className="arch aspect-[4/5] w-full object-cover shadow-card transition-transform duration-700 hover:scale-[1.02]"
                 />
               </div>
             </div>
@@ -77,18 +72,13 @@ function MenuPage() {
               <h2 className="mt-1 text-4xl md:text-5xl">{section.title}</h2>
               <p className="mt-3 text-muted-foreground">{section.intro}</p>
               <div className="truck-strip mt-8 w-24 rounded-full" />
-              <ul className="mt-6 divide-y divide-border">
+              <ul className="mt-6">
                 {section.items.map((item) => (
-                  <li key={item.name} className="py-6">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-display text-2xl">{item.name}</h3>
-                      {item.signature && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-accent-foreground">
-                          <Flame className="size-3" /> Favourite
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-2 text-muted-foreground">{item.description}</p>
+                  <li key={item.name} className="group flex items-baseline gap-4 py-4 transition-colors hover:bg-muted/50">
+                    <h3 className="font-display text-xl transition-transform duration-300 group-hover:translate-x-1">{item.name}</h3>
+                    <span className="flex-1 border-b border-dotted border-border" />
+                    <span className="shrink-0 text-xs text-muted-foreground">{item.calories} cal</span>
+                    <span className="w-20 shrink-0 text-right font-semibold text-primary">SR {item.price}</span>
                   </li>
                 ))}
               </ul>

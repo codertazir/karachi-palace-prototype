@@ -27,8 +27,7 @@ export function Header() {
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              activeProps={{ className: "text-primary" }}
+              className="relative py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-50 data-[status=active]:text-primary data-[status=active]:after:scale-x-100"
               activeOptions={{ exact: true }}
             >
               {item.label}
@@ -52,14 +51,13 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-border px-5 pb-6 pt-3 md:hidden">
+        <nav className="animate-rise flex flex-col gap-1 border-t border-border px-5 pb-6 pt-3 md:hidden">
           {NAV.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className="py-3 font-display text-2xl text-foreground"
-              activeProps={{ className: "text-primary" }}
+              className="py-3 font-display text-2xl text-foreground underline-offset-8 data-[status=active]:text-primary data-[status=active]:underline"
               activeOptions={{ exact: true }}
             >
               {item.label}
