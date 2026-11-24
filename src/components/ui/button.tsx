@@ -19,7 +19,7 @@ const buttonVariants = cva(
         saffron:
           "rounded-full bg-primary text-primary-foreground font-semibold shadow-glow hover:brightness-110 hover:-translate-y-0.5 transition-all",
         cream:
-          "rounded-full border border-cream/40 bg-transparent text-cream font-semibold hover:bg-cream hover:text-background transition-all",
+          "rounded-full border border-primary/60 bg-background/70 backdrop-blur text-foreground font-semibold hover:bg-primary hover:text-primary-foreground transition-all",
       },
       size: {
         default: "h-9 px-4 py-2",

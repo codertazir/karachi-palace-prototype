@@ -9,9 +9,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Karachi Palace design system — "Karachi nights":
- * warm charcoal night, saffron gold, chili red, Pakistan emerald and cream,
- * with truck-art inspired ornament strips and Mughal arch frames.
+ * Karachi Palace design system — "Karachi gold":
+ * warm white base, light golden text and accents, chili red and Pakistan
+ * emerald highlights, with truck-art inspired ornament strips and Mughal arch frames.
  */
 
 @theme inline {
@@ -69,30 +69,30 @@
 :root {
   --radius: 0.5rem;
 
-  --saffron: oklch(0.8 0.15 78);
-  --chili: oklch(0.58 0.2 30);
+  --saffron: oklch(0.72 0.13 80);
+  --chili: oklch(0.55 0.19 30);
   --emerald: oklch(0.42 0.09 162);
-  --cream: oklch(0.95 0.03 85);
-  --ember: oklch(0.7 0.18 50);
+  --cream: oklch(0.96 0.025 88);
+  --ember: oklch(0.68 0.16 55);
 
-  --background: oklch(0.16 0.012 55);
-  --foreground: var(--cream);
-  --card: oklch(0.2 0.015 55);
-  --card-foreground: var(--cream);
-  --popover: oklch(0.2 0.015 55);
-  --popover-foreground: var(--cream);
+  --background: oklch(0.985 0.008 90);
+  --foreground: oklch(0.32 0.03 60);
+  --card: oklch(0.955 0.02 88);
+  --card-foreground: oklch(0.32 0.03 60);
+  --popover: oklch(0.985 0.008 90);
+  --popover-foreground: oklch(0.32 0.03 60);
   --primary: var(--saffron);
-  --primary-foreground: oklch(0.18 0.02 55);
+  --primary-foreground: oklch(0.25 0.03 55);
   --secondary: var(--emerald);
   --secondary-foreground: var(--cream);
-  --muted: oklch(0.24 0.015 55);
-  --muted-foreground: oklch(0.75 0.03 80);
+  --muted: oklch(0.94 0.02 88);
+  --muted-foreground: oklch(0.5 0.04 70);
   --accent: var(--chili);
   --accent-foreground: var(--cream);
-  --destructive: oklch(0.6 0.22 27);
+  --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: var(--cream);
-  --border: oklch(0.8 0.15 78 / 18%);
-  --input: oklch(0.8 0.15 78 / 25%);
+  --border: oklch(0.72 0.13 80 / 30%);
+  --input: oklch(0.72 0.13 80 / 45%);
   --ring: var(--saffron);
   --chart-1: var(--saffron);
   --chart-2: var(--chili);
@@ -100,28 +100,28 @@
   --chart-4: var(--ember);
   --chart-5: var(--cream);
   --sidebar: var(--card);
-  --sidebar-foreground: var(--cream);
+  --sidebar-foreground: oklch(0.32 0.03 60);
   --sidebar-primary: var(--saffron);
-  --sidebar-primary-foreground: oklch(0.18 0.02 55);
+  --sidebar-primary-foreground: oklch(0.25 0.03 55);
   --sidebar-accent: var(--muted);
-  --sidebar-accent-foreground: var(--cream);
+  --sidebar-accent-foreground: oklch(0.32 0.03 60);
   --sidebar-border: var(--border);
   --sidebar-ring: var(--saffron);
 
   --gradient-hero: linear-gradient(
     90deg,
-    oklch(0.16 0.012 55) 0%,
-    oklch(0.16 0.012 55 / 85%) 35%,
-    oklch(0.16 0.012 55 / 0%) 75%
+    oklch(0.985 0.008 90) 0%,
+    oklch(0.985 0.008 90 / 88%) 35%,
+    oklch(0.985 0.008 90 / 0%) 75%
   );
-  --gradient-fade-up: linear-gradient(0deg, oklch(0.16 0.012 55) 0%, oklch(0.16 0.012 55 / 0%) 60%);
+  --gradient-fade-up: linear-gradient(0deg, oklch(0.985 0.008 90) 0%, oklch(0.985 0.008 90 / 0%) 60%);
   --gradient-ember: radial-gradient(
     ellipse at 50% 100%,
-    oklch(0.7 0.18 50 / 22%) 0%,
-    oklch(0.16 0.012 55 / 0%) 65%
+    oklch(0.72 0.13 80 / 20%) 0%,
+    oklch(0.985 0.008 90 / 0%) 65%
   );
-  --shadow-glow: 0 18px 50px -18px oklch(0.8 0.15 78 / 45%);
-  --shadow-card: 0 24px 60px -30px oklch(0 0 0 / 80%);
+  --shadow-glow: 0 18px 50px -18px oklch(0.72 0.13 80 / 55%);
+  --shadow-card: 0 24px 60px -30px oklch(0.4 0.05 70 / 45%);
 }
 
 @layer base {
